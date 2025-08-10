@@ -106,6 +106,9 @@
   border: none;
   cursor: pointer;
 }
+.show-panel-btn svg {
+  pointer-events: none;
+}
 
 @keyframes opacity {
   0% {

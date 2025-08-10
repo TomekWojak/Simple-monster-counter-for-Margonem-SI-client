@@ -78,9 +78,9 @@
 	&:first-child {
 		margin: 0;
 	}
-    &:last-child {
-        margin-bottom: 1.5em;
-    }
+	&:last-child {
+		margin-bottom: 1.5em;
+	}
 	p {
 		margin: 1em 0;
 	}
@@ -97,6 +97,10 @@
 	background: none;
 	border: none;
 	cursor: pointer;
+
+	svg {
+		pointer-events: none;
+	}
 }
 
 @keyframes opacity {
