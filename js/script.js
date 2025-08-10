@@ -130,7 +130,7 @@ const checkStatus = new MutationObserver((entries) => {
 		}
 	}
 });
-const resetIfBattleWindowHidden = () => {
+const resetState = () => {
 	if (battleWindow.style.display === "none" && isFinished === true) {
 		isFinished = false;
 	}
@@ -139,5 +139,5 @@ const resetIfBattleWindowHidden = () => {
 createCounterBtn();
 createPanel();
 createBottomControls();
-setInterval(resetIfBattleWindowHidden, 200);
+setInterval(resetState, 200);
 checkStatus.observe(battleStatus, { childList: true });
