@@ -67,6 +67,7 @@ const createPanel = () => {
 		mobBoxes = document.createElement("div");
 		panel.classList.add("counter-panel");
 		mobBoxes.classList.add("mob-boxes");
+		mobBoxes.classList.add("scroll");
 
 		mainWindow.append(panel);
 		panel.append(mobBoxes);
@@ -84,7 +85,6 @@ const createBottomControls = () => {
 const createMobBox = (foundObj) => {
 	const BOX_ID = `${foundObj.name}-${foundObj.lvl}`;
 	if (document.querySelector(`[data-monster-id="${BOX_ID}"]`)) {
-		console.log(`Box już istnieje`);
 		const quantity = mobBox.querySelector(".mob-counter");
 		if (quantity) {
 			quantity.textContent = foundObj.amount;
@@ -100,7 +100,6 @@ const createMobBox = (foundObj) => {
                     <p class="mob-date-info">Liczone od: <span class="mob-date">27.01.2025</span></p>
                 </div>
                 <img src="${foundObj.img}" alt="" class="mob-graphic"></div>`;
-	console.log("wykonano");
 	mobBoxes.append(mobBox);
 };
 
@@ -111,7 +110,6 @@ const checkHp = (node) => {
 	const iElem = tempBox.querySelector("i");
 	const HP = iElem.textContent.trim();
 	if (HP === "Życie: 0%") {
-		console.log("sas");
 		return true;
 	}
 };
@@ -133,9 +131,7 @@ const checkStatus = new MutationObserver((entries) => {
 						const foundMob = mobs.find((mobData) => mobData.id === id);
 						if (foundMob) {
 							foundMob.amount++;
-							console.log(foundMob.amount);
 							createMobBox(foundMob);
-							console.log("utworzono");
 						}
 					}
 				}
