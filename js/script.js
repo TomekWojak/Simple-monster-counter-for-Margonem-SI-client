@@ -67,6 +67,7 @@ const createPanel = () => {
 		mobBoxes = document.createElement("div");
 		panel.classList.add("counter-panel");
 		mobBoxes.classList.add("mob-boxes");
+		mobBoxes.classList.add("scroll")
 
 		mainWindow.append(panel);
 		panel.append(mobBoxes);
