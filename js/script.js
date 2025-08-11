@@ -1,42 +1,7 @@
+let mobs = [];
 const mainWindow = document.getElementById("centerbox");
 const battleWindow = document.getElementById("battle");
 const battleStatus = document.getElementById("battletimer");
-
-const mobs = [
-	{
-		name: "Shae Phu",
-		id: "troop-222512",
-		lvl: 30,
-		amount: 0,
-		img: "https://micc.garmory-cdn.cloud/obrazki/npc/e2/demonszef.gif",
-	},
-	{
-		name: "test1",
-		id: "troop-22482",
-		lvl: 20,
-		amount: 0,
-	},
-	{
-		name: "Władca Rzek",
-		id: "troop-264342",
-		lvl: 37,
-		amount: 0,
-		img: "https://micc.garmory-cdn.cloud/obrazki/npc/e2/gobmag2.gif",
-	},
-	{
-		name: "Gobbos",
-		id: "troop-207860",
-		lvl: 40,
-		amount: 0,
-		img: "https://micc.garmory-cdn.cloud/obrazki/npc/e2/gobsamurai.gif",
-	},
-	{
-		name: "TEST2",
-		id: "troop-33291",
-		lvl: 50,
-		amount: 0,
-	},
-];
 
 let panel;
 let mobBox;
@@ -83,7 +48,7 @@ const createBottomControls = () => {
 	bottomControls.querySelector(".close").addEventListener("click", showPanel);
 };
 const createMobBox = (foundObj) => {
-	const BOX_ID = `${foundObj.name}-${foundObj.lvl}`;
+	const BOX_ID = `${foundObj.name}-${foundObj.id}`;
 	if (document.querySelector(`[data-monster-id="${BOX_ID}"]`)) {
 		const quantity = mobBox.querySelector(".mob-counter");
 		if (quantity) {
@@ -91,7 +56,7 @@ const createMobBox = (foundObj) => {
 		}
 		return;
 	}
-	const date = setCurrentDate();
+	const date = setCurrentDate(foundObj);
 	mobBox = document.createElement("div");
 	mobBox.dataset.monsterId = BOX_ID;
 	mobBox.classList.add("mob-box");
@@ -103,11 +68,12 @@ const createMobBox = (foundObj) => {
                 <img src="${foundObj.img}" alt="" class="mob-graphic"></div>`;
 	mobBoxes.append(mobBox);
 };
-const setCurrentDate = () => {
+const setCurrentDate = (foundObj) => {
 	const currDate = new Date();
 	const currDay = currDate.getDate();
 	const currMonth = currDate.getMonth() + 1;
 	const currYear = currDate.getFullYear();
+	foundObj.firstBeat = `${currDay}.${currMonth}.${currYear}`;
 	return `${currDay}.${currMonth}.${currYear}`;
 };
 const checkHp = (node) => {
@@ -139,6 +105,7 @@ const checkStatus = new MutationObserver((entries) => {
 						if (foundMob) {
 							foundMob.amount++;
 							createMobBox(foundMob);
+							localStorage.setItem("mobData", JSON.stringify(mobs));
 						}
 					}
 				}
@@ -151,9 +118,22 @@ const resetState = () => {
 		isFinished = false;
 	}
 };
-
+const loadMobBoxes = () => {
+	const saved = localStorage.getItem("mobData");
+	if (saved) {
+		const savedMobs = JSON.parse(saved);
+		mobs.length = 0;
+		mobs.push(...savedMobs);
+		savedMobs.forEach((mob) => {
+			if (mob.amount > 0) {
+				createMobBox(mob);
+			}
+		});
+	}
+};
 createCounterBtn();
 createPanel();
 createBottomControls();
+loadMobBoxes();
 setInterval(resetState, 200);
 checkStatus.observe(battleStatus, { childList: true });
