@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Shae Phu",
+    "id": "troop-222512",
+    "lvl": 30,
+    "amount": 0,
+    "img": "https://micc.garmory-cdn.cloud/obrazki/npc/e2/demonszef.gif"
+  },
+  {
+    "name": "test1",
+    "id": "troop-22482",
+    "lvl": 20,
+    "amount": 0
+  },
+  {
+    "name": "Władca Rzek",
+    "id": "troop-264342",
+    "lvl": 37,
+    "amount": 0,
+    "img": "https://micc.garmory-cdn.cloud/obrazki/npc/e2/gobmag2.gif"
+  },
+  {
+    "name": "Gobbos",
+    "id": "troop-207860",
+    "lvl": 40,
+    "amount": 0,
+    "img": "https://micc.garmory-cdn.cloud/obrazki/npc/e2/gobsamurai.gif"
+  },
+  {
+    "name": "TEST2",
+    "id": "troop-33291",
+    "lvl": 50,
+    "amount": 0
+  }
+]
