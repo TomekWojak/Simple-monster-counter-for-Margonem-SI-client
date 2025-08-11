@@ -122,8 +122,8 @@ const loadMobBoxes = () => {
 	const saved = localStorage.getItem("mobData");
 	if (saved) {
 		const savedMobs = JSON.parse(saved);
-		window.mobs.length = 0;
-		window.mobs.push(...savedMobs);
+		mobs.length = 0;
+		mobs.push(...savedMobs);
 		savedMobs.forEach((mob) => {
 			if (mob.amount > 0) {
 				createMobBox(mob);
