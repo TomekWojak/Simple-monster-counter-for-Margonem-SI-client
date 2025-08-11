@@ -67,11 +67,7 @@ const createPanel = () => {
 		mobBoxes = document.createElement("div");
 		panel.classList.add("counter-panel");
 		mobBoxes.classList.add("mob-boxes");
-<<<<<<< HEAD
 		mobBoxes.classList.add("scroll");
-=======
-		mobBoxes.classList.add("scroll")
->>>>>>> 6452b2a9fe1b84471f69b8caa16b64589fbd3026
 
 		mainWindow.append(panel);
 		panel.append(mobBoxes);
@@ -95,18 +91,25 @@ const createMobBox = (foundObj) => {
 		}
 		return;
 	}
+	const date = setCurrentDate();
 	mobBox = document.createElement("div");
 	mobBox.dataset.monsterId = BOX_ID;
 	mobBox.classList.add("mob-box");
 	mobBox.innerHTML = `<div class="mob-data"><p class="mob-name">${foundObj.name}</p>
                     <p class="mob-lvl-info">Poziom: <span class="mob-lvl"> ${foundObj.lvl}</span></p>
                     <p class="mob-counter-info">Liczba ubić: <span class="mob-counter">${foundObj.amount}</span></p>
-                    <p class="mob-date-info">Liczone od: <span class="mob-date">27.01.2025</span></p>
+                    <p class="mob-date-info">Liczone od: <span class="mob-date">${date}</span></p>
                 </div>
                 <img src="${foundObj.img}" alt="" class="mob-graphic"></div>`;
 	mobBoxes.append(mobBox);
 };
-
+const setCurrentDate = () => {
+	const currDate = new Date();
+	const currDay = currDate.getDate();
+	const currMonth = currDate.getMonth() + 1;
+	const currYear = currDate.getFullYear();
+	return `${currDay}.${currMonth}.${currYear}`;
+};
 const checkHp = (node) => {
 	const tip = node.getAttribute("tip");
 	const tempBox = document.createElement("div");
