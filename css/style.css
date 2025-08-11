@@ -100,7 +100,8 @@
 }
 
 .show-panel-btn {
-  bottom: 100px;
+  left: -13px;
+  bottom: 120px;
   position: absolute;
   background: none;
   border: none;
