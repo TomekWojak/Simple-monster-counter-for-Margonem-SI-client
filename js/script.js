@@ -49,8 +49,9 @@ const createBottomControls = () => {
 };
 const createMobBox = (foundObj) => {
 	const BOX_ID = `${foundObj.name}-${foundObj.id}`;
-	if (document.querySelector(`[data-monster-id="${BOX_ID}"]`)) {
-		const quantity = mobBox.querySelector(".mob-counter");
+	const existingBox = document.querySelector(`[data-monster-id="${BOX_ID}"]`);
+	if (existingBox) {
+		const quantity = existingBox.querySelector(".mob-counter");
 		if (quantity) {
 			quantity.textContent = foundObj.amount;
 		}
