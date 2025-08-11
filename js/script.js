@@ -1,4 +1,3 @@
-let mobs = [];
 const mainWindow = document.getElementById("centerbox");
 const battleWindow = document.getElementById("battle");
 const battleStatus = document.getElementById("battletimer");
