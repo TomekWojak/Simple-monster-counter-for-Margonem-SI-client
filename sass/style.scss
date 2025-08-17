@@ -94,8 +94,9 @@
 }
 .show-panel-btn {
 	bottom: 100px;
+	left: 10px;
 	position: absolute;
-	background: none;
+	background: rgba(0, 0, 0, 0.3);
 	border: none;
 	cursor: pointer;
 	z-index: 400;
