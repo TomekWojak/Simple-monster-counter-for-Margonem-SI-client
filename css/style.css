@@ -105,7 +105,7 @@
   background: rgba(0, 0, 0, 0.3);
   border: none;
   cursor: pointer;
-  z-index: 297;
+  z-index: 300;
 }
 .show-panel-btn svg {
   pointer-events: none;
